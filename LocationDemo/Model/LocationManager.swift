@@ -13,7 +13,7 @@ import MapKit
 class LocationManager: NSObject {
     var locationManager = CLLocationManager()
     static var sharedInstance = LocationManager()
-    override init() {
+    override init() { //simgthon
         super.init()
         locationManager.delegate = self
         self.locationManager.delegate = self

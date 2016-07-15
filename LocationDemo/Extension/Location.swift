@@ -28,7 +28,7 @@ class Singleton  {
 
 //Nested struct
 
-class Singleton1 {
+class Singleton1 { //singthon
     class var sharedInstance: Singleton1 {
         struct Static {
             static let instance: Singleton1 = Singleton1()
