@@ -12,8 +12,10 @@
 		8FA9CD581D38752E00104B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA9CD561D38752E00104B1E /* LaunchScreen.storyboard */; };
 		8FA9CD631D38752E00104B1E /* LocationDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9CD621D38752E00104B1E /* LocationDemoTests.swift */; };
 		8FA9CD6E1D38752E00104B1E /* LocationDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9CD6D1D38752E00104B1E /* LocationDemoUITests.swift */; };
-		8FA9CD7D1D38759B00104B1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9CD7B1D38759B00104B1E /* HomeViewController.swift */; };
-		8FA9CD7E1D38759B00104B1E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA9CD7C1D38759B00104B1E /* HomeViewController.xib */; };
+		8FEDDD1C1D38EBC70021FAE9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEDDD1A1D38EBC70021FAE9 /* HomeViewController.swift */; };
+		8FEDDD1D1D38EBC70021FAE9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FEDDD1B1D38EBC70021FAE9 /* HomeViewController.xib */; };
+		8FEDDD251D38EECD0021FAE9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEDDD241D38EECD0021FAE9 /* Location.swift */; };
+		8FEDDD271D38EFE40021FAE9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEDDD261D38EFE40021FAE9 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +47,10 @@
 		8FA9CD691D38752E00104B1E /* LocationDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA9CD6D1D38752E00104B1E /* LocationDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDemoUITests.swift; sourceTree = "<group>"; };
 		8FA9CD6F1D38752E00104B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8FA9CD7B1D38759B00104B1E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8FA9CD7C1D38759B00104B1E /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		8FEDDD1A1D38EBC70021FAE9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8FEDDD1B1D38EBC70021FAE9 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		8FEDDD241D38EECD0021FAE9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8FEDDD261D38EFE40021FAE9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,13 @@
 		8FA9CD4C1D38752D00104B1E /* LocationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8FEDDD1F1D38ECD40021FAE9 /* Extension */,
+				8FEDDD1E1D38EC160021FAE9 /* Model */,
 				8FA9CD4D1D38752E00104B1E /* AppDelegate.swift */,
+				8FEDDD191D38EBC70021FAE9 /* HomeViewController */,
 				8FA9CD541D38752E00104B1E /* Assets.xcassets */,
 				8FA9CD561D38752E00104B1E /* LaunchScreen.storyboard */,
 				8FA9CD591D38752E00104B1E /* Info.plist */,
-				8FA9CD7B1D38759B00104B1E /* HomeViewController.swift */,
-				8FA9CD7C1D38759B00104B1E /* HomeViewController.xib */,
 			);
 			path = LocationDemo;
 			sourceTree = "<group>";
@@ -123,6 +128,31 @@
 				8FA9CD6F1D38752E00104B1E /* Info.plist */,
 			);
 			path = LocationDemoUITests;
+			sourceTree = "<group>";
+		};
+		8FEDDD191D38EBC70021FAE9 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FEDDD1A1D38EBC70021FAE9 /* HomeViewController.swift */,
+				8FEDDD1B1D38EBC70021FAE9 /* HomeViewController.xib */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		8FEDDD1E1D38EC160021FAE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8FEDDD261D38EFE40021FAE9 /* LocationManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8FEDDD1F1D38ECD40021FAE9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8FEDDD241D38EECD0021FAE9 /* Location.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +262,7 @@
 			files = (
 				8FA9CD581D38752E00104B1E /* LaunchScreen.storyboard in Resources */,
 				8FA9CD551D38752E00104B1E /* Assets.xcassets in Resources */,
-				8FA9CD7E1D38759B00104B1E /* HomeViewController.xib in Resources */,
+				8FEDDD1D1D38EBC70021FAE9 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FEDDD271D38EFE40021FAE9 /* LocationManager.swift in Sources */,
 				8FA9CD4E1D38752E00104B1E /* AppDelegate.swift in Sources */,
-				8FA9CD7D1D38759B00104B1E /* HomeViewController.swift in Sources */,
+				8FEDDD251D38EECD0021FAE9 /* Location.swift in Sources */,
+				8FEDDD1C1D38EBC70021FAE9 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +515,7 @@
 				8FA9CD741D38752E00104B1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FA9CD751D38752E00104B1E /* Build configuration list for PBXNativeTarget "LocationDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +524,7 @@
 				8FA9CD771D38752E00104B1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FA9CD781D38752E00104B1E /* Build configuration list for PBXNativeTarget "LocationDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +533,7 @@
 				8FA9CD7A1D38752E00104B1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
