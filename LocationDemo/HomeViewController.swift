@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak private var longitudeLabel: UILabel!
     @IBOutlet weak private var addressLabel: UILabel!
     @IBOutlet weak private var streetLabel: UILabel!
-    
+     
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -91,7 +91,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             let streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
     
             // Street address
-            streetLabel.text = "\(streetName!)" + " \(administrativeArea!)"
+            streetLabel.text = "\(streetName!)" + " \(administrativeArea!)" + " \(country!)"
             print("DiaBan: \(locality!)")
             print("Ma BD: \(postalCode!)")
             print("AD: \(administrativeArea!)")
