@@ -20,12 +20,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak private var addressLabel: UILabel!
     @IBOutlet weak private var streetLabel: UILabel!
  
- //   var locationManager = CLLocationManager()
+    var locationManager = LocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeViewController()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,18 +41,12 @@ class HomeViewController: UIViewController {
     }
     
     func setUpData() {
-//        self.locationManager.delegate = self
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        self.locationManager.requestWhenInUseAuthorization()
-//        self.locationManager.startUpdatingLocation()
-//        self.mapView.showsUserLocation = true
-//    
-//        //--- Find Address of Current Location ---//
-//        let location = self.locationManager.location
-//        let latitude: Double = location!.coordinate.latitude
-//        let longitude: Double = location!.coordinate.longitude
-//        latitudeLabel.text = String(latitude)
-//        longitudeLabel.text = String(longitude)
+        self.mapView.showsUserLocation = true
+        latitudeLabel.text = String(locationManager.latitude!)
+        longitudeLabel.text = String(locationManager.longitude!)
+        streetLabel.text = locationManager.streetName
+        print("Co street name ko: \(locationManager.streetName)")
+        streetLabel.text = "\(locationManager.streetName)" + " \(locationManager.administrativeArea)" + " \(locationManager.country)"
     }
 }
 

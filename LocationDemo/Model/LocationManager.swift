@@ -11,38 +11,47 @@ import CoreLocation
 import MapKit
 
 class LocationManager: NSObject {
-    var locationManager = CLLocationManager()
+    var longitude: Double?
+    var latitude: Double?
+    var region: String?
+    var streetName: String?
+    var administrativeArea: String?
+    var country: String?
+    var location = CLLocationManager()
     static var sharedInstance = LocationManager()
-    override init() { //simgthon
+    
+    override init() { //Singleton
         super.init()
-        locationManager.delegate = self
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        self.location.delegate = self
+        self.location.desiredAccuracy = kCLLocationAccuracyBest
+        self.location.requestWhenInUseAuthorization()
+        self.location.startUpdatingLocation()
         
         //--- Find Address of Current Location ---//
-        let location = self.locationManager.location
-        let latitude: Double = location!.coordinate.latitude
-        let longitude: Double = location!.coordinate.longitude
+        let location = self.location.location
+        self.latitude = location!.coordinate.latitude
+        self.longitude = location!.coordinate.longitude
+        //address street
+        self.country = "Name"
     }
 }
 
+LocationManager.done()
 
 
 extension LocationManager: CLLocationManagerDelegate {
-    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-   //     self.locationManager.stopUpdatingLocation()
+        _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        self.location.stopUpdatingLocation()
         //--- CLGeocode to get address of current location ---//
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
                 return
             }
+    
             if placemarks!.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
                 self.displayLocationInfo(pm)
@@ -56,20 +65,18 @@ extension LocationManager: CLLocationManagerDelegate {
     func displayLocationInfo(placemark: CLPlacemark?) {
         if let containsPlacemark = placemark {
             //stop updating location to save battery life
-         //   locationManager.stopUpdatingLocation()
+            location.stopUpdatingLocation()
             let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
             let postalCode = (containsPlacemark.postalCode != nil) ? containsPlacemark.postalCode : ""
-            let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            let streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
+            self.administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            self.country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            self.streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
             
-            // Street address
-        //    streetLabel.text = "\(streetName!)" + " \(administrativeArea!)" + " \(country!)"
             print("DiaBan: \(locality!)")
             print("Ma BD: \(postalCode!)")
-            print("AD: \(administrativeArea!)")
-            print("Vung: \(country!)")
-            print("Street: \(streetName!)")
+            print("Dia Chi: \(self.administrativeArea!)")
+            print("Vung: \(self.country!)")
+            print("Street: \(self.streetName!)")
         }
     }
     
