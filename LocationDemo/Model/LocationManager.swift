@@ -31,13 +31,8 @@ class LocationManager: NSObject {
         let location = self.location.location
         self.latitude = location!.coordinate.latitude
         self.longitude = location!.coordinate.longitude
-        //address street
-        self.country = "Name"
     }
 }
-
-LocationManager.done()
-
 
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -71,7 +66,6 @@ extension LocationManager: CLLocationManagerDelegate {
             self.administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
             self.country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             self.streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
-            
             print("DiaBan: \(locality!)")
             print("Ma BD: \(postalCode!)")
             print("Dia Chi: \(self.administrativeArea!)")

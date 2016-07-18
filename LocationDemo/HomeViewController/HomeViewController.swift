@@ -20,8 +20,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak private var addressLabel: UILabel!
     @IBOutlet weak private var streetLabel: UILabel!
  
-    var locationManager = LocationManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeViewController()
@@ -42,11 +40,11 @@ class HomeViewController: UIViewController {
     
     func setUpData() {
         self.mapView.showsUserLocation = true
-        latitudeLabel.text = String(locationManager.latitude!)
-        longitudeLabel.text = String(locationManager.longitude!)
-        streetLabel.text = locationManager.streetName
-        print("Co street name ko: \(locationManager.streetName)")
-        streetLabel.text = "\(locationManager.streetName)" + " \(locationManager.administrativeArea)" + " \(locationManager.country)"
+        latitudeLabel.text = String(LocationManager.sharedInstance.latitude!)
+        longitudeLabel.text = String(LocationManager.sharedInstance.longitude!)
+        streetLabel.text = LocationManager.sharedInstance.country
+        print("Co street name ko: \(LocationManager.sharedInstance.country)")
+//        streetLabel.text = "\(locationManager.streetName)" + " \(locationManager.administrativeArea)" + " \(locationManager.country)"
     }
 }
 
