@@ -13,10 +13,6 @@ import MapKit
 class LocationManager: NSObject {
     var longitude: Double?
     var latitude: Double?
-    var region: String?
-    var streetName: String?
-    var administrativeArea: String?
-    var country: String?
     var location = CLLocationManager()
     static var sharedInstance = LocationManager()
     
@@ -36,10 +32,7 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        self.location.stopUpdatingLocation()
+      //    self.location.stopUpdatingLocation()
         //--- CLGeocode to get address of current location ---//
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
             if (error != nil) {
@@ -63,14 +56,14 @@ extension LocationManager: CLLocationManagerDelegate {
             location.stopUpdatingLocation()
             let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
             let postalCode = (containsPlacemark.postalCode != nil) ? containsPlacemark.postalCode : ""
-            self.administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            self.country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            self.streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
+            let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            let streetName = (containsPlacemark.name != nil) ? containsPlacemark.name : ""
             print("DiaBan: \(locality!)")
             print("Ma BD: \(postalCode!)")
-            print("Dia Chi: \(self.administrativeArea!)")
-            print("Vung: \(self.country!)")
-            print("Street: \(self.streetName!)")
+            print("Dia Chi: \(administrativeArea!)")
+            print("Vung: \(country!)")
+            print("Street: \(streetName!)")
         }
     }
     
